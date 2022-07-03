@@ -109,7 +109,7 @@ export default (ins: Feed) => {
     if (item.content) {
       entry.content = {
         _attributes: { type: "html" },
-        _cdata: item.content,
+        ...(typeof item.content === 'string' ? { _cdata: item.content } : item.content)
       };
     }
 
