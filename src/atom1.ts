@@ -108,8 +108,10 @@ export default (ins: Feed) => {
 
     if (item.content) {
       entry.content = {
-        _attributes: { type: "html" },
-        _cdata: item.content,
+        _attributes: { type: "xhtml" },
+        ...(typeof item.content === 'string'
+            ? { _cdata: item.content }
+            : { div: { _attributes: { xmlns: "http://www.w3.org/1999/xhtml" }, ...item.content } }),
       };
     }
 

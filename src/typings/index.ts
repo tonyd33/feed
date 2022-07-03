@@ -5,7 +5,7 @@ export interface Item {
   date: Date;
 
   description?: string;
-  content?: string;
+  content?: string | Record<string, any>;
   category?: Category[];
 
   guid?: string;
